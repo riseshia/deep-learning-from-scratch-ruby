@@ -58,7 +58,7 @@ def cross_entropy_error(y, t)
   end
            
   batch_size = y.shape[0]
-  -np_sum(np.log(pick_indices(y, np_arange(stop: batch_size), t)) / batch_size
+  -np_sum(np.log(pick_indices(y, np_arange(stop: batch_size), t))) / batch_size
 end
 
 def softmax_loss(x, t)

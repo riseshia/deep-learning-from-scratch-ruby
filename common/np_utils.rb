@@ -1,4 +1,3 @@
-require "math"
 require "nmatrix"
 
 def assign_if(matrix, filter, value) 

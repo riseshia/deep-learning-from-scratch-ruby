@@ -103,7 +103,7 @@ def load_mnist(normalize: true, flatten: true, one_hot_label: false)
   dataset = Marshal.load(File.binread(SAVE_FILE))
   # NMatrix cannot be marshaled
   dataset.keys.each do |key|
-    dataset[key] = N[dataset[key], dtype: :int16]
+    dataset[key] = N[*dataset[key], dtype: :int16]
   end
 
   if normalize
@@ -116,7 +116,7 @@ def load_mnist(normalize: true, flatten: true, one_hot_label: false)
     dataset['train_label'] = _change_one_hot_label(dataset['train_label'])
     dataset['test_label'] = _change_one_hot_label(dataset['test_label'])    
   end
-  
+
   unless flatten
     %w[train_img test_img].each do |key|
       n = shape.inject(&:*) / 28 / 28

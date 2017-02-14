@@ -1,13 +1,23 @@
 require "nmatrix"
+require_relative "../dataset/mnist"
+require_relative "../common/functions"
 
 def get_data()
   (x_train, t_train), (x_test, t_test) = \
-    load_mnist(normalize=True, flatten=True, one_hot_label=False)
-  x_test, t_test
+    load_mnist(normalize: true, flatten: true, one_hot_label: false)
+  [x_test, t_test]
 end
 
 def init_network()
-  Marshal.load(File.binread("sample_weight.binary"))
+  raw = Marshal.load(File.binread("ch03/sample_weight.binary"))
+  {
+    'W1' => N[*raw['W1']],
+    'W2' => N[*raw['W2']],
+    'W3' => N[*raw['W3']],
+    'b1' => N[*raw['b1']],
+    'b2' => N[*raw['b2']],
+    'b3' => N[*raw['b3']]
+  }
 end
 
 def predict(network, x)
@@ -26,8 +36,10 @@ x, t = get_data()
 network = init_network()
 accuracy_cnt = 0
 
-(0...x.size).each do |i|
-  y = predict(network, x[i])
+require "byebug"
+(0...x.rows).each do |i|
+  byebug
+  y = predict(network, x.row(i))
   p = np_argmax(y) # 最も確率の高い要素のインデックスを取得
   accuracy_cnt += 1 if p == t[i]
 end
