@@ -10,7 +10,9 @@ def step_function(x)
 end
 
 def sigmoid(x)
-  1 / (1 + np_exp(-x))
+  b = np_exp(-x) + 1
+  t = NMatrix.ones_like(b)
+  t / b
 end
 
 def sigmoid_grad(x)

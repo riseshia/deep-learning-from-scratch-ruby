@@ -14,9 +14,9 @@ def init_network()
     'W1' => N[*raw['W1']],
     'W2' => N[*raw['W2']],
     'W3' => N[*raw['W3']],
-    'b1' => N[*raw['b1']],
-    'b2' => N[*raw['b2']],
-    'b3' => N[*raw['b3']]
+    'b1' => N[raw['b1']],
+    'b2' => N[raw['b2']],
+    'b3' => N[raw['b3']]
   }
 end
 
@@ -36,9 +36,7 @@ x, t = get_data()
 network = init_network()
 accuracy_cnt = 0
 
-require "byebug"
 (0...x.rows).each do |i|
-  byebug
   y = predict(network, x.row(i))
   p = np_argmax(y) # 最も確率の高い要素のインデックスを取得
   accuracy_cnt += 1 if p == t[i]
