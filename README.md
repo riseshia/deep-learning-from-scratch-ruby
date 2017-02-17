@@ -1,5 +1,7 @@
 # ゼロから作る Deep Learning ソースコード Ruby版(WIP)
 
+[![Build Status](https://travis-ci.org/riseshia/deep-learning-from-scratch-ruby.svg?branch=master)](https://travis-ci.org/riseshia/deep-learning-from-scratch-ruby)
+
 本リポジトリではオライリー・ジャパン発行書籍『[ゼロから作る Deep Learning](http://www.oreilly.co.jp/books/9784873117584/)』の[ソースコード](https://github.com/oreilly-japan/deep-learning-from-scratch)のRuby版を勉強がてら作ってます。
 
 ただし、今のところ、Matplotlibに対応はしない予定です。ですのでグラフを作るコードは
