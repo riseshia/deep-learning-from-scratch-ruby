@@ -1,4 +1,4 @@
-# ゼロから作る Deep Learning ソースコード Ruby版(WIP)
+# ゼロから作る Deep Learning ソースコード Ruby版(Giveup!!)
 
 [![Build Status](https://travis-ci.org/riseshia/deep-learning-from-scratch-ruby.svg?branch=master)](https://travis-ci.org/riseshia/deep-learning-from-scratch-ruby)
 
