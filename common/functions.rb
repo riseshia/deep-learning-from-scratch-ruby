@@ -30,11 +30,21 @@ def relu_grad(x)
 end 
 
 def softmax(x)
+  x_row, x_col = x.shape
+  x = x.reshape(x_col) if x_row == 1
+
   if x.dimensions == 2
     x = x.transpose
-    x = x - x.max
-    exp_x = np_exp(x)
-    y = exp_x / np_sum(exp_x)
+    x_max = x.max(0).to_a
+    x.each_row do |row|
+      (0...x_max.size).each { |i| row[i] -= x_max[i] }
+    end
+
+    y = np_exp(x)
+    y_sum = y.sum(0).to_a
+    y.each_row do |row|
+      (0...y_sum.size).each { |i| row[i] /= y_sum[i] }
+    end
     y.transpose 
   else
     x = x - x.max # オーバーフロー対策

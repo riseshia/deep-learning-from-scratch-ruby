@@ -44,28 +44,26 @@ def np_maximum(min, x)
 end
 
 def np_sum(x)
-  x.sum.inject(&:+)
+  x.each.inject(&:+)
 end
 
 def np_argmax(x, axis: nil)
-  raise "Only support axis = nil, 1" if axis != 1 and a != nil
-
   if axis.nil?
-    x = x.reshape(1, x.size)
-  end
-
-  argmax = []
-  x.each_row do |row|
     max_idx = 0
-    row.each_with_index do |el, idx|
-      max_idx = idx if el[idx] > el[max_idx]
+    flatten_x = x.to_a.flatten
+    flatten_x.each_with_index do |el, idx|
+      max_idx = idx if el > flatten_x[max_idx]
     end
-    argmax << max_idx
-  end
-
-  if axis.nil?
-    argmax.first
+    max_idx
   else
+    argmax = []
+    x.each_along_dim(axis) do |row|
+      max_idx = 0
+      row.each_with_index do |el, idx|
+        max_idx = idx if el[idx] > el[max_idx]
+      end
+      argmax << max_idx
+    end
     argmax
   end
 end

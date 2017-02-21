@@ -38,9 +38,8 @@ accuracy_cnt = 0
 
 (0...x.rows).each do |i|
   y = predict(network, x.row(i))
-  p = np_argmax(y) # 最も確率の高い要素のインデックスを取得
-  accuracy_cnt += 1 if p == t[i]
+  s_idx = np_argmax(y) # 最も確率の高い要素のインデックスを取得
+  accuracy_cnt += 1 if s_idx == t[i]
 end
 
-puts "Accuracy: #{str(float(accuracy_cnt) / len(x))}"
-
+puts "Accuracy: #{accuracy_cnt.to_f / x.rows}"
