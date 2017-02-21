@@ -6,7 +6,7 @@ def identity_function(x)
 end
 
 def step_function(x)
-  x.map { |n| x > 0 ? 1 : 0 }    
+  x.map { |n| n > 0 ? 1 : 0 }    
 end
 
 def sigmoid(x)
@@ -21,7 +21,6 @@ end
 
 def relu(x)
   np_maximum(0, x)
-  x.map { |n| [0, n].max }    
 end
 
 def relu_grad(x)

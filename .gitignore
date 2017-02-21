@@ -83,3 +83,8 @@ build-iPhoneSimulator/
 # End of https://www.gitignore.io/api/osx,ruby
 
 .byebug_history
+
+# Binary
+dataset/mnist.binary
+ch08/deep_convnet_params.pkl
+ch07/params.pkl
